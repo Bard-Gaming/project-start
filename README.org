@@ -1,0 +1,9 @@
+#+title: Project Starter
+#+author: Christophe DRONNE
+#+date: Mon Dec 29 18:14:40 2025
+
+** About
+
+** Using the CLI
+
+** Customizing
