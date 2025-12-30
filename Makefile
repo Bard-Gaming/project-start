@@ -10,6 +10,7 @@ NAME = project-start
 INCLUDE_DIRS = -I./include/
 
 SRC_FILES =	src/string/string_addchr.c					\
+			src/string/string_addmem.c					\
 			src/string/string_addstr.c					\
 			src/string/string_delete.c					\
 			src/string/string_from_reference.c			\

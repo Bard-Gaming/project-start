@@ -24,6 +24,7 @@ String string_new(char *str);
 String string_from_reference(const char *ref);
 void string_addchr(String *str, char c);
 void string_addstr(String *str, const char *restrict ref);
+void string_addmem(String *str, const char *restrict mem, size_t size);
 void string_reserve(String *str, size_t capacity);
 void string_delete(String *str);
 
