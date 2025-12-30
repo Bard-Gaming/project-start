@@ -28,7 +28,7 @@ The config is structured as follows:
 <config root>/
   |-- templates/
         |-- common/
-              |-- <file name>.template
+        |     |-- <file name>.template
         |-- <programming language>/
               |-- <file name>.template
 #+end_src
