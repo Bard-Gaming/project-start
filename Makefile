@@ -15,7 +15,16 @@ INCLUDE_DIRS = -I./include/
 
 CFLAGS += -D'PROJECT_START_CONFIG_PATH="$(CONFIG_PATH)"'
 
-SRC_FILES =	src/string/string_addchr.c					\
+SRC_FILES =	\
+			src/hashtable/hashtable_delete.c			\
+			src/hashtable/hashtable_get.c				\
+			src/hashtable/hashtable_get_bucket.c		\
+			src/hashtable/hashtable_hash.c				\
+			src/hashtable/hashtable_init.c				\
+			src/hashtable/hashtable_set.c				\
+			src/memory/xcalloc.c						\
+			src/memory/xmalloc.c						\
+			src/string/string_addchr.c					\
 			src/string/string_addmem.c					\
 			src/string/string_addstr.c					\
 			src/string/string_delete.c					\

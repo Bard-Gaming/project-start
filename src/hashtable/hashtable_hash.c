@@ -22,5 +22,6 @@ size_t hashtable_hash(unsigned char capacity_power, const char *key)
     for (size_t i = 0; key[i] != '\0'; i++) {
         result = (result + key[i] + i) * HASHING_FACTOR;
     }
+
     return result & capacity_limiter;  // equivalent to % (capacity_limiter + 1)
 }

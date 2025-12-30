@@ -7,20 +7,10 @@
 */
 
 #include <project_starter/hashtable.h>
+#include <project_starter/memory.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-
-static void *xmalloc(size_t size)
-{
-    void *ptr = malloc(size);
-
-    if (size != 0 && ptr == NULL) {
-        fputs("critical error: unable to allocate memory for hashtable", stderr);
-        exit(127);
-    }
-    return ptr;
-}
 
 /**
  * Initializes a hashtable.
@@ -29,9 +19,11 @@ static void *xmalloc(size_t size)
  */
 void hashtable_init(Hashtable *table)
 {
-    table->buckets = xmalloc(
-        (1UL << HASHTABLE_INIT_POWER) * sizeof(HashtableBucket *)
+    table->buckets = xcalloc(
+        1UL << HASHTABLE_INIT_POWER,
+        sizeof(HashtableBucket *)
     );
+
     table->capacity_power = HASHTABLE_INIT_POWER;
     table->count = 0;
 }
