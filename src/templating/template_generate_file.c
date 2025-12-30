@@ -8,6 +8,7 @@
 
 #include <project_starter/templating.h>
 #include <project_starter/string.h>
+#include <project_starter/memory.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -38,12 +39,16 @@ static char *output_file_path(const char *src_path, const char *dest_dir)
         return NULL;
     }
     *extension = '\0';
+
+    // get rid of trailing '/' if present
     if (dest_dir[dest_dir_len - 1] == '/')
         dest_dir_len--;
+
     string_addmem(&result, dest_dir, dest_dir_len);
     string_addchr(&result, '/');
     string_addstr(&result, filename);
     free(filename);
+
     return result.c_str;
 }
 
@@ -76,19 +81,25 @@ static FILE *open_output_file(const char *src_path, const char *dest_dir)
 bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir)
 {
     FILE *src_file = fopen(src_path, "rb");
-    FILE *out_file;
-    char *content;
-
     if (src_file == NULL)
         return false;
-    content = template_parse_stream(context, src_file);
+
+    char *raw_file_content = xmalloc((TMPL_MAX_FILE_SIZE + 1) * sizeof(char));
+    size_t read_chars = fread(raw_file_content, sizeof(char), TMPL_MAX_FILE_SIZE, src_file);
+    raw_file_content[read_chars] = '\0';
     fclose(src_file);
-    out_file = open_output_file(src_path, dest_dir);
+
+    char *content = template_parse_content(&context->variables, raw_file_content);
+    free(raw_file_content);
+
+    FILE *out_file = open_output_file(src_path, dest_dir);
     if (out_file == NULL) {
         free(content);
         return false;
     }
+
     fputs(content, out_file);
     free(content);
+
     return true;
 }
