@@ -22,6 +22,7 @@ typedef struct {
 
 String string_new(char *str);
 String string_from_reference(const char *ref);
+String string_copy(const String *str);
 void string_addchr(String *str, char c);
 void string_addstr(String *str, const char *restrict ref);
 void string_addmem(String *str, const char *restrict mem, size_t size);
