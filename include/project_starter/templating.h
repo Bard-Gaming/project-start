@@ -27,7 +27,9 @@ typedef struct {
 
 TemplateContext template_create_context(void);
 char *template_parse_content(const Hashtable *variables, const char *src);
-bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir);
+
+bool template_generate_file(const Hashtable *vars, const char *src_path, const char *dest_dir);
+bool template_generate_from_directory(const Hashtable *vars, const char *dir_path, const char *dest_dir);
 
 
 #endif

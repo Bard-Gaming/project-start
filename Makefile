@@ -7,34 +7,35 @@
 
 NAME = project-start
 
-CONFIG_PATH = ~/.config/epitech-project-start/
+CONFIG_PATH = $(HOME)/.config/epitech-project-start/
 TEMPLATES_DIR = templates/
 USR_BIN = ~/.local/bin/
 
 INCLUDE_DIRS = -I./include/
 
-CFLAGS += -D'PROJECT_START_CONFIG_PATH="$(CONFIG_PATH)"'
+CFLAGS += -D'PROJECT_STARTER_CONFIG_PATH="$(CONFIG_PATH)"'
 
 SRC_FILES =	\
-			src/hashtable/hashtable_delete.c			\
-			src/hashtable/hashtable_get.c				\
-			src/hashtable/hashtable_get_bucket.c		\
-			src/hashtable/hashtable_hash.c				\
-			src/hashtable/hashtable_init.c				\
-			src/hashtable/hashtable_set.c				\
-			src/memory/xcalloc.c						\
-			src/memory/xmalloc.c						\
-			src/string/string_addchr.c					\
-			src/string/string_addmem.c					\
-			src/string/string_addstr.c					\
-			src/string/string_delete.c					\
-			src/string/string_from_reference.c			\
-			src/string/string_new.c						\
-			src/string/string_reserve.c					\
-			src/templating/template_create_context.c	\
-			src/templating/template_generate_file.c		\
-			src/templating/template_parse_content.c		\
-			src/main.c									\
+			src/hashtable/hashtable_delete.c						\
+			src/hashtable/hashtable_get.c							\
+			src/hashtable/hashtable_get_bucket.c					\
+			src/hashtable/hashtable_hash.c							\
+			src/hashtable/hashtable_init.c							\
+			src/hashtable/hashtable_set.c							\
+			src/memory/xcalloc.c									\
+			src/memory/xmalloc.c									\
+			src/string/string_addchr.c								\
+			src/string/string_addmem.c								\
+			src/string/string_addstr.c								\
+			src/string/string_delete.c								\
+			src/string/string_from_reference.c						\
+			src/string/string_new.c									\
+			src/string/string_reserve.c								\
+			src/templating/template_create_context.c				\
+			src/templating/template_generate_file.c					\
+			src/templating/template_generate_from_directory.c		\
+			src/templating/template_parse_content.c					\
+			src/main.c												\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

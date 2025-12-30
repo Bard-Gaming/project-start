@@ -78,7 +78,7 @@ static FILE *open_output_file(const char *src_path, const char *dest_dir)
  *
  * Returns true on success and false on error.
  */
-bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir)
+bool template_generate_file(const Hashtable *vars, const char *src_path, const char *dest_dir)
 {
     FILE *src_file = fopen(src_path, "rb");
     if (src_file == NULL)
@@ -89,7 +89,7 @@ bool template_generate_file(const TemplateContext *context, const char *src_path
     raw_file_content[read_chars] = '\0';
     fclose(src_file);
 
-    char *content = template_parse_content(&context->variables, raw_file_content);
+    char *content = template_parse_content(vars, raw_file_content);
     free(raw_file_content);
 
     FILE *out_file = open_output_file(src_path, dest_dir);
