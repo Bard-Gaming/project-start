@@ -17,6 +17,7 @@ SRC_FILES =	src/string/string_addchr.c					\
 			src/string/string_new.c						\
 			src/string/string_reserve.c					\
 			src/templating/template_parse_stream.c		\
+			src/templating/template_generate_file.c		\
 			src/main.c									\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
@@ -34,7 +35,7 @@ $(NAME): $(OBJ_FILES)
 	@echo 'cc -o $@'
 
 debug: CFLAGS += -ggdb
-debug: $(NAME)
+debug: fclean $(NAME)
 
 clean:
 	@rm -f $(OBJ_FILES)
