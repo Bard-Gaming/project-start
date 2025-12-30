@@ -27,11 +27,13 @@ SRC_FILES =	\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
 			src/string/string_addstr.c								\
+			src/string/string_copy.c								\
 			src/string/string_delete.c								\
 			src/string/string_from_reference.c						\
 			src/string/string_new.c									\
 			src/string/string_reserve.c								\
 			src/templating/template_create_context.c				\
+			src/templating/template_generate.c						\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
 			src/templating/template_parse_content.c					\
