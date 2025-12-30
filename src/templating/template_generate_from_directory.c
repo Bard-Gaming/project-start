@@ -14,6 +14,12 @@
 #include <dirent.h>
 
 
+/**
+ * Determines if the given path
+ * needs to be ignored during the
+ * directory entry processing or
+ * not.
+ */
 static bool is_ignored_path(const char *path)
 {
     if (path[0] != '.')
@@ -25,6 +31,9 @@ static bool is_ignored_path(const char *path)
     return path[1] == '.' && path[2] == '\0';
 }
 
+/**
+ * Joins two paths together.
+ */
 static char *join_paths(const char *a, const char *b)
 {
     String result = string_from_reference(a);
