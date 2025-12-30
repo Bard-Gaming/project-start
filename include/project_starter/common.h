@@ -9,8 +9,9 @@
 #ifndef PROJECT_STARTER_COMMON_H
     #define PROJECT_STARTER_COMMON_H
 
+    #define PROJECT_STARTER_VERSION "1.0"
+
     #ifndef PROJECT_STARTER_CONFIG_PATH
         #define PROJECT_STARTER_CONFIG_PATH "~/.config/project-start/"
     #endif
-
 #endif

@@ -7,7 +7,7 @@
 
 NAME = project-start
 
-CONFIG_PATH = $(HOME)/.config/epitech-project-start/
+CONFIG_PATH = $(HOME)/.config/project-start/
 TEMPLATES_DIR = templates/
 USR_BIN = ~/.local/bin/
 
