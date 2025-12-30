@@ -17,6 +17,7 @@
 typedef struct {
     const char *name;
     const char *display_name;
+    const char *project_org;
     const char *year;
 } TemplateContext;
 
