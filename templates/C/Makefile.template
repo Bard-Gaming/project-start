@@ -9,11 +9,11 @@ NAME = {{name}}
 
 INCLUDE_DIRS = -I./include/
 
-SRC_FILES =	src/main.c                  				\
+SRC_FILES =	src/main.c                                              \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-.PHONY: all debug clean fclean re
+.PHONY: all debug sanitize clean fclean re
 
 all: $(NAME)
 
@@ -27,6 +27,9 @@ $(NAME): $(OBJ_FILES)
 
 debug: CFLAGS += -ggdb
 debug: fclean $(NAME)
+
+sanitize: CFLAGS += -g -fsanitize=address -lasan
+sanitize: fclean $(NAME)
 
 clean:
 	@rm -f $(OBJ_FILES)
