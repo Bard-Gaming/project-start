@@ -60,7 +60,7 @@ $(NAME): $(OBJ_FILES)
 debug: CFLAGS += -ggdb
 debug: fclean $(NAME)
 
-sanitize: CFLAGS += -g
+sanitize: CFLAGS += -g -fsanitize=address -lasan
 sanitize: fclean $(NAME)
 
 clean:
