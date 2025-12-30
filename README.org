@@ -3,7 +3,38 @@
 #+date: Mon Dec 29 18:14:40 2025
 
 ** About
+~project-start~ is a highly configurable command line utility
+allowing you to easily start new projects in different
+low-level programming languages, such as C and C++.
+
+** Installing
+To install the CLI, all you need to do is run the following
+commands:
+
+#+begin_src shell
+git clone git@github.com:Bard-Gaming/project-start.git
+cd project-start
+make install
+#+end_src
 
 ** Using the CLI
 
 ** Customizing
+By default, the command's config can be found at
+~~/.config/epitech-project-start/~.
+
+The config is structured as follows:
+#+begin_src
+<config root>/
+  |-- templates/
+        |-- common/
+              |-- <file name>.template
+        |-- <programming language>/
+              |-- <file name>.template
+#+end_src
+
+Template files (i.e. files ending in ~.template~) can
+contain variables in the following format: ~{{VAR_NAME}}~.
+
+These variables will get replaced when a new project is
+created.
