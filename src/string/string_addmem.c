@@ -35,6 +35,8 @@ static void grow_string(String *str, size_t extra_size)
  */
 void string_addmem(String *str, const char *restrict mem, size_t size)
 {
+    if (size == 0)
+        return;
     if (str->length + size + 1 > str->capacity)
         grow_string(str, size);
     memcpy(str->c_str + str->length, mem, size);

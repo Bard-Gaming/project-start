@@ -36,7 +36,7 @@ static void *xrealloc(void *ptr, size_t size)
  */
 void string_reserve(String *str, size_t capacity)
 {
-    if (str->capacity <= capacity)
+    if (str->capacity >= capacity)
         return;
     str->c_str = xrealloc(str->c_str, capacity);
     str->capacity = capacity;
