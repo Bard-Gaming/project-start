@@ -1,0 +1,17 @@
+/*
+** {{project_org}} PROJECT, {{year}}
+** {{display_name}}
+** File description:
+** Program Entry
+*/
+
+#include <stdlib.h>
+
+
+/**
+ * Program entry
+ */
+int main(void)
+{
+    return 0;
+}
