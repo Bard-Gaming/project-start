@@ -84,9 +84,9 @@ The variables that are available by default are as follows:
 
 | *Name*             | *Description*                                                                              |
 | ~{{name}}~         | Project Name, as specified by the NAME argument                                            |
+| ~{{NAME}}~         | The value of ~{{name}}~ in uppercase                                                       |
 | ~{{display_name}}~ | Project's Display Name, as specified by the DISPLAY_NAME argument (defaults to ~{{name}}~) |
 | ~{{author}}~       | The name of the user running the command                                                   |
 | ~{{organisation}}~ | Project's organisation (default: ~EPITECH~)                                                |
 | ~{{year}}~         | The current year                                                                           |
 | ~{{time}}~         | The current time, in the following format: ~Wed Dec 31 17:31:13 2025~                      |
-|                    |                                                                                            |
