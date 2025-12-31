@@ -27,17 +27,14 @@
  * templates/C/Makefile.template         | .          | ./Makefile
  * templates/common/.gitignore.template  | project    | project/.gitignore
  */
-static char *output_file_path(const char *src_path, const char *dest_dir)
+static char *output_file_path(const char *filename, const char *dest_dir)
 {
     String result = { 0 };
-    char *filename = strdup(basename(src_path));
     char *extension = strrchr(filename, '.');
     size_t dest_dir_len = strlen(dest_dir);
 
-    if (extension == NULL || strcmp(extension + 1, TMPL_FILE_EXTENSION) != 0) {
-        free(filename);
+    if (extension == NULL || strcmp(extension + 1, TMPL_FILE_EXTENSION) != 0)
         return NULL;
-    }
     *extension = '\0';
 
     // get rid of trailing '/' if present
@@ -47,7 +44,6 @@ static char *output_file_path(const char *src_path, const char *dest_dir)
     string_addmem(&result, dest_dir, dest_dir_len);
     string_addchr(&result, '/');
     string_addstr(&result, filename);
-    free(filename);
 
     return result.c_str;
 }
@@ -59,15 +55,17 @@ static char *output_file_path(const char *src_path, const char *dest_dir)
  *
  * Returns NULL on error.
  */
-static FILE *open_output_file(const char *src_path, const char *dest_dir)
+static FILE *open_output_file(const Hashtable *vars, const char *src_path, const char *dest_dir)
 {
-    char *file_path = output_file_path(src_path, dest_dir);
-    FILE *output_file;
-
+    char *filename = template_parse_content(vars, basename(src_path));
+    char *file_path = output_file_path(filename, dest_dir);
+    free(filename);
     if (file_path == NULL)
         return NULL;
-    output_file = fopen(file_path, "wb");
+
+    FILE *output_file = fopen(file_path, "wb");
     free(file_path);
+
     return output_file;
 }
 
@@ -92,7 +90,7 @@ bool template_generate_file(const Hashtable *vars, const char *src_path, const c
     char *content = template_parse_content(vars, raw_file_content);
     free(raw_file_content);
 
-    FILE *out_file = open_output_file(src_path, dest_dir);
+    FILE *out_file = open_output_file(vars, src_path, dest_dir);
     if (out_file == NULL) {
         free(content);
         return false;

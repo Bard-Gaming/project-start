@@ -52,6 +52,9 @@ static const char *parse_variable(const Hashtable *variables, const char **src)
  * Parses the given content, replacing
  * all variables by their values, as
  * defined in the variables table.
+ *
+ * Note: The returned string must
+ * be free()d by the user.
  */
 char *template_parse_content(const Hashtable *variables, const char *src)
 {

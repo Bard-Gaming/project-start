@@ -57,7 +57,9 @@ static void handle_directory_entry(const Hashtable *vars, struct dirent *entry, 
     char *entry_path = join_paths(dir, entry->d_name);
 
     if (entry->d_type == DT_DIR) {
-        char *new_destination = join_paths(dest, entry->d_name);
+        char *subdir_name = template_parse_content(vars, entry->d_name);
+        char *new_destination = join_paths(dest, subdir_name);
+        free(subdir_name);
 
         mkdir(new_destination, 0755);
         template_generate_from_directory(vars, entry_path, new_destination);
