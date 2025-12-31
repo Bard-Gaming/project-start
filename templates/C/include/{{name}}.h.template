@@ -7,7 +7,7 @@
 ** friendly symbols.
 */
 
-#ifndef _H
-    #define _H
+#ifndef {{NAME}}_H
+    #define {{NAME}}_H
 
 #endif
