@@ -22,17 +22,20 @@ cd project-start
 make install
 #+end_src
 
+#+begin_quote
+[!TIP]
+Once installation is complete, you may run
+~make fclean~ to delete the files that were
+created during the install process, or you
+can simply delete the cloned repository.
+#+end_quote
+
 *** Debug install
-If, however, you need a debug version of the CLI, you may
+To install a version of the CLI with debug symbols enabled, you may
 prepend the ~install~ rule with ~debug~, as follows:
 #+begin_src shell
 make debug install
 #+end_src
-
-*** Cleanup
-Once installation is complete, you may run ~make fclean~
-to delete all built files, or simply delete the cloned
-repository.
 
 ** Using the CLI
 To view the CLI's usage and options, you may simply run
