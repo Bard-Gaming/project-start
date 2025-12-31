@@ -36,6 +36,7 @@ SRC_FILES =	\
 			src/string/string_from_reference.c						\
 			src/string/string_new.c									\
 			src/string/string_reserve.c								\
+			src/string/string_upper.c								\
 			src/templating/template_create_context.c				\
 			src/templating/template_delete_context.c				\
 			src/templating/template_generate.c						\
