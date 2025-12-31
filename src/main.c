@@ -34,7 +34,7 @@ static const char doc[] =
 static const char args_doc[] = "NAME [DISPLAY_NAME]";
 
 static const struct argp_option options[] = {
-    { "git", 'g', NULL, 0, "Initialize a new git repository;\nIf a remote is specified, this is implicitely true." },
+    { "git", 'g', NULL, 0, "Initialize a new git repository;\nIf a remote is specified, this is implicitly true." },
     { "language", 'l', "LANGUAGE", 0, "Choose the project's programming language (default: C)" },
     { "organisation", 'o', "ORGANISATION", 0, "Set the 'organisation' variable for templates (default: EPITECH)" },
     { "remote", 'r', "REMOTE_URL", 0, "Specify a git remote url for the project" },
