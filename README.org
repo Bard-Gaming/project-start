@@ -4,11 +4,11 @@
 
 #+HTML: <img src="https://img.shields.io/badge/Release-1.0-brightgreen">
 
-[[file:blob/help.png]]
-
 ~project-start~ is a highly configurable command line utility
 allowing you to easily start new projects in different
 low-level programming languages, such as C and C++.
+
+[[file:blob/help.png]]
 
 ** Installing
 This project uses *GNU Make* to build and install all
