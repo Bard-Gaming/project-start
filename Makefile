@@ -27,6 +27,7 @@ SRC_FILES =	\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
 			src/string/string_addstr.c								\
+			src/string/string_clear.c								\
 			src/string/string_copy.c								\
 			src/string/string_delete.c								\
 			src/string/string_from_reference.c						\
@@ -36,6 +37,7 @@ SRC_FILES =	\
 			src/templating/template_generate.c						\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
+			src/templating/template_generate_git.c					\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
 			src/main.c												\
