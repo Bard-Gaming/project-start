@@ -32,7 +32,7 @@ static void load_defaults(TemplateContext *context)
     // the program is running whilst the year changes (which isn't
     // that much of an issue).
     hashtable_set(&context->variables, "year", get_current_year());
-    hashtable_set(&context->variables, "project_org", "EPITECH");
+    hashtable_set(&context->variables, "organisation", "EPITECH");
 }
 
 /**

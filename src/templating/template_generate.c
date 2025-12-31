@@ -23,6 +23,8 @@ void template_generate(const TemplateContext *context)
     String lang_tmpl_path = string_copy(&config_path);
     bool success;
 
+    string_delete(&config_path);
+
     string_addstr(&common_tmpl_path, "templates/common/");
 
     string_addstr(&lang_tmpl_path, "templates/");
@@ -40,4 +42,7 @@ void template_generate(const TemplateContext *context)
     if (!success) {
         fprintf(stderr, "error: failed to generate %s templates\n", context->language);
     }
+
+    string_delete(&common_tmpl_path);
+    string_delete(&lang_tmpl_path);
 }
