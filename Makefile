@@ -24,6 +24,8 @@ SRC_FILES =	\
 			src/hashtable/hashtable_set.c							\
 			src/memory/xcalloc.c									\
 			src/memory/xmalloc.c									\
+			src/os/os_exec_command.c								\
+			src/os/os_move.c										\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
 			src/string/string_addstr.c								\
