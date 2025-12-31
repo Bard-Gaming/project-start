@@ -12,8 +12,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <sys/wait.h>
-#include <signal.h>
 #include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
 
 
 static size_t array_length(const char *argv[])
@@ -48,8 +49,13 @@ static void child_process(const char *argv[])
 {
     char **argv_copy = duplicate_array(argv);
 
-    execvp(argv[0], argv_copy);
+    // throw away outputs
+    int output = open("/dev/null", O_WRONLY);
+    dup2(output, STDOUT_FILENO);
+    dup2(output, STDERR_FILENO);
+    close(output);
 
+    execvp(argv[0], argv_copy);
     free_array(argv_copy);
     exit(1);  // in case execvp fails
 }
