@@ -30,6 +30,7 @@ typedef struct {
 
 
 TemplateContext template_create_context(void);
+void template_delete_context(TemplateContext *context);
 void template_register_context_names(TemplateContext *context);
 
 char *template_parse_content(const Hashtable *variables, const char *src);

@@ -8,9 +8,17 @@
 
 #include <project_starter/templating.h>
 #include <project_starter/hashtable.h>
+#include <project_starter/os.h>
+#include <string.h>
+#include <unistd.h>
 #include <time.h>
+#include <pwd.h>
 
 
+/**
+ * Note: the returned string needs
+ * to be free()d by the user.
+ */
 static char *get_current_year(void)
 {
     time_t current_time = time(NULL);
@@ -18,7 +26,21 @@ static char *get_current_year(void)
     static char year_buffer[5] = { 0 };
 
     snprintf(year_buffer, 5, "%d", time_info->tm_year + 1900);
-    return year_buffer;
+    return strdup(year_buffer);  // duplicate to avoid override
+}
+
+/**
+ * Note: the returned string needs
+ * to be free()d by the user.
+ */
+static char *get_username(void)
+{
+    struct passwd *user_info = getpwuid(getuid());
+    if (user_info == NULL)
+        return strdup("unknown");
+
+    // duplicate to avoid override
+    return strdup(user_info->pw_name);
 }
 
 /**
@@ -27,12 +49,13 @@ static char *get_current_year(void)
  */
 static void load_defaults(TemplateContext *context)
 {
-    // get_current_year() returns a static ptr, but this shouldn't
-    // be an issue since it always contains the same result, unless
-    // the program is running whilst the year changes (which isn't
-    // that much of an issue).
-    hashtable_set(&context->variables, "year", get_current_year());
+    // May not be freed
     hashtable_set(&context->variables, "organisation", "EPITECH");
+
+    // Need to be freed
+    hashtable_set(&context->variables, "year", get_current_year());
+    hashtable_set(&context->variables, "time", strdup(os_readable_time()));
+    hashtable_set(&context->variables, "author", get_username());
 }
 
 /**
