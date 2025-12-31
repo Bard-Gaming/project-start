@@ -24,11 +24,8 @@ project-start --help
 #+end_src
 
 Some of the available options are as follows:
-+---+---+
 | a | b |
-+---+---+
 | c | d |
-+---+---+
 
 ** Customizing
 By default, the command's config can be found at
