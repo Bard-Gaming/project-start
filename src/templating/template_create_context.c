@@ -45,6 +45,8 @@ TemplateContext template_create_context(void)
         .names = { 0 },
         .language = "C",
         .variables = { 0 },
+        .should_initialize_git = false,
+        .git_remote = NULL,
     };
 
     hashtable_init(&context.variables);
