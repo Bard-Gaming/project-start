@@ -37,6 +37,7 @@ SRC_FILES =	\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
 			src/templating/template_parse_content.c					\
+			src/templating/template_register_context_names.c		\
 			src/main.c												\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
