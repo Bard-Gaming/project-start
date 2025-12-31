@@ -24,8 +24,10 @@ project-start --help
 #+end_src
 
 Some of the available options are as follows:
-| a | b |
-| c | d |
+| Option         | Description                                                   |
+| --language     | Choose the project's programming language (default: C)        |
+| --organisation | Set the 'organisation' variable for templates                 |
+| --year         | Set the 'year' variable for templates (default: current year) |
 
 ** Customizing
 By default, the command's config can be found at
