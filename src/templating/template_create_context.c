@@ -17,7 +17,7 @@ static char *get_current_year(void)
     struct tm *time_info = localtime(&current_time);
     static char year_buffer[5] = { 0 };
 
-    snprintf(year_buffer, 5, "%d", time_info->tm_year);
+    snprintf(year_buffer, 5, "%d", time_info->tm_year + 1900);
     return year_buffer;
 }
 
