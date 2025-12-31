@@ -23,6 +23,9 @@ typedef struct {
     const char *language;
     const char *names[2];
     Hashtable variables;
+
+    bool should_initialize_git;
+    const char *git_remote;
 } TemplateContext;
 
 
@@ -32,6 +35,7 @@ void template_register_context_names(TemplateContext *context);
 char *template_parse_content(const Hashtable *variables, const char *src);
 
 void template_generate(const TemplateContext *context);
+void template_generate_git(const TemplateContext *context, const char *path);
 bool template_generate_file(const Hashtable *vars, const char *src_path, const char *dest_dir);
 bool template_generate_from_directory(const Hashtable *vars, const char *dir_path, const char *dest_dir);
 

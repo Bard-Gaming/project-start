@@ -31,6 +31,7 @@ void template_generate(const TemplateContext *context)
     string_addstr(&lang_tmpl_path, context->language);
 
     const char *project_dir = context->names[0] ?: ".";
+
     mkdir(project_dir, 0755);
 
     success = template_generate_from_directory(&context->variables, common_tmpl_path.c_str, project_dir);
@@ -42,6 +43,9 @@ void template_generate(const TemplateContext *context)
     if (!success) {
         fprintf(stderr, "error: failed to generate %s templates\n", context->language);
     }
+
+    if (context->should_initialize_git)
+        template_generate_git(context, project_dir);
 
     string_delete(&common_tmpl_path);
     string_delete(&lang_tmpl_path);
