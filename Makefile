@@ -9,7 +9,7 @@ NAME = project-start
 
 CONFIG_PATH = $(HOME)/.config/project-start/
 TEMPLATES_DIR = templates/
-USR_BIN = ~/.local/bin/
+USR_BIN = /usr/bin
 
 INCLUDE_DIRS = -I./include/
 
@@ -51,20 +51,22 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-install: CFLAGS += -Ofast
-install: $(NAME) $(TEMPLATES_DIR)
-	@if ! [[ -d ~ ]]; then 															\
+$(CONFIG_PATH):
+	@if ! [[ -d ~ ]]; then															\
 		printf "\033[31m%s\033[0m\n" "unable to install: no home directory" >&2;	\
 		false; 																		\
 	fi
+
 	@printf "%s\n" "creating directory $(CONFIG_PATH)"
 	@mkdir --parents $(CONFIG_PATH)
 
+install: CFLAGS += -Ofast
+install: $(NAME) $(TEMPLATES_DIR) $(CONFIG_PATH)
 	@printf "%s\n" "copying templates into config"
 	@cp -r $(TEMPLATES_DIR) $(CONFIG_PATH)
 
 	@printf "%s\n" "adding binary to $(USR_BIN)"
-	@cp $(NAME) $(USR_BIN)
+	@sudo cp $(NAME) $(USR_BIN)
 
 	@printf "\033[32m%s\033[0m\n" "successfully installed $(NAME)"
 
