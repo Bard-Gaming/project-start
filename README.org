@@ -5,8 +5,8 @@
 #+HTML: <img src="https://img.shields.io/badge/Release-1.0-brightgreen">
 
 ~project-start~ is a highly configurable command line utility
-allowing you to easily start new projects in different
-low-level programming languages, such as C and C++.
+allowing you to easily start new projects in all kinds of
+programming languages, such as C, C++, and Python.
 
 [[file:blob/help.png]]
 
