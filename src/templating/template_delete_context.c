@@ -14,6 +14,7 @@
 
 static const char *keys_to_free[] = {
     "year", "time", "author",
+    "NAME",
     NULL
 };
 
