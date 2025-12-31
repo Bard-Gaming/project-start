@@ -1,9 +1,8 @@
 #+title: Project Starter
 #+author: Christophe DRONNE
 #+date: Mon Dec 29 18:14:40 2025
-#+macro: version 1.0
 
-#+HTML: <img src="https://img.shields.io/badge/Version-{{version}}-brightgreen">
+#+HTML: <img src="https://img.shields.io/badge/Version-1.0-brightgreen">
 
 ~project-start~ is a highly configurable command line utility
 allowing you to easily start new projects in different
@@ -26,10 +25,10 @@ project-start --help
 #+end_src
 
 Some of the available options are as follows:
-| Option           | Description                                                   |
-| ~--language~     | Choose the project's programming language (default: C)        |
-| ~--organisation~ | Set the 'organisation' variable for templates                 |
-| ~--year~         | Set the 'year' variable for templates (default: current year) |
+| *Option*     | *Description*                                                                         |
+| ~--language~ | Choose the project's programming language (default: C)                                |
+| ~--git~      | Initializes a git repository when creating the                                        |
+| ~--remote~   | Specifies the remote that should be used for the git repository. This implies ~--git~ |
 
 ** Customizing
 By default, the command's config can be found at
@@ -45,8 +44,25 @@ The config is structured as follows:
               |-- <file name>.template
 #+end_src
 
+#+begin_quote
+[!IMPORTANT]
+Only files ending in ~.template~ will get
+added to new projects. Directories are not
+affected by this.
+#+end_quote
+
+*** Templates
 Template files (i.e. files ending in ~.template~) can
 contain variables in the following format: ~{{VAR_NAME}}~.
 
 These variables will get replaced when a new project is
 created.
+
+*** Variables
+The variables that are available by default are as follows:
+
+| *Name*             | *Description*                                        |
+| ~{{name}}~         | Project Name, as specified by the NAME argument      |
+| ~{{display_name}}~ | Project's Display Name (default: same as ~{{name}}~) |
+| ~{{year}}~         | The current year (default: system year)              |
+| ~{{organisation}}~ | Project's organisation (default: ~EPITECH~)           |
