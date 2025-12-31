@@ -1,0 +1,13 @@
+/*
+** {{organisation}} PROJECT, {{year}}
+** Module: Common
+** File description:
+** User header file that
+** defines all user-
+** friendly symbols.
+*/
+
+#ifndef _H
+    #define _H
+
+#endif

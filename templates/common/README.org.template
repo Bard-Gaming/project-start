@@ -1,0 +1,5 @@
+#+title: {{display_name}}
+#+author: {{author}}
+#+date: {{time}}
+
+#+HTML: <img src="https://img.shields.io/badge/Release-v1.0.0-brightgreen">
