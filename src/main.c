@@ -36,9 +36,7 @@ static const char args_doc[] = "NAME [DISPLAY_NAME]";
 static const struct argp_option options[] = {
     { "git", 'g', NULL, 0, "Initialize a new git repository;\nIf a remote is specified, this is implicitly true." },
     { "language", 'l', "LANGUAGE", 0, "Choose the project's programming language (default: C)" },
-    { "organisation", 'o', "ORGANISATION", 0, "Set the 'organisation' variable for templates (default: EPITECH)" },
     { "remote", 'r', "REMOTE_URL", 0, "Specify a git remote url for the project" },
-    { "year", 'y', "YEAR", 0, "Set the 'year' variable for templates (default: current year)" },
     { 0 }
 };
 
@@ -53,15 +51,9 @@ static error_t parse_option(int key, char *arg, struct argp_state *state)
         case 'l':
             context->language = arg;
             return 0;
-        case 'o':
-            hashtable_set(&context->variables, "organisation", arg);
-            return 0;
         case 'r':
             context->git_remote = arg;
             context->should_initialize_git = true;
-            return 0;
-        case 'y':
-            hashtable_set(&context->variables, "year", arg);
             return 0;
 
         case ARGP_KEY_ARG:
