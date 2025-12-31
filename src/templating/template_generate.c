@@ -9,6 +9,7 @@
 #include <project_starter/templating.h>
 #include <project_starter/string.h>
 #include <stdio.h>
+#include <sys/stat.h>
 
 
 /**
@@ -27,12 +28,15 @@ void template_generate(const TemplateContext *context)
     string_addstr(&lang_tmpl_path, "templates/");
     string_addstr(&lang_tmpl_path, context->language);
 
-    success = template_generate_from_directory(&context->variables, common_tmpl_path.c_str, ".");
+    const char *project_dir = context->names[0] ?: ".";
+    mkdir(project_dir, 0755);
+
+    success = template_generate_from_directory(&context->variables, common_tmpl_path.c_str, project_dir);
     if (!success) {
         fputs("error: failed to generate common templates\n", stderr);
     }
 
-    success = template_generate_from_directory(&context->variables, lang_tmpl_path.c_str, ".");
+    success = template_generate_from_directory(&context->variables, lang_tmpl_path.c_str, project_dir);
     if (!success) {
         fprintf(stderr, "error: failed to generate %s templates\n", context->language);
     }

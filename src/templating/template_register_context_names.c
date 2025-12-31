@@ -23,7 +23,4 @@ void template_register_context_names(TemplateContext *context)
 
     hashtable_set(&context->variables, "name", (void *)context->names[0]);
     hashtable_set(&context->variables, "display_name", (void *)context->names[1]);
-
-    context->names[0] = NULL;
-    context->names[1] = NULL;
 }
