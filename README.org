@@ -2,7 +2,7 @@
 #+author: Christophe DRONNE
 #+date: Mon Dec 29 18:14:40 2025
 
-#+HTML: <img src="https://img.shields.io/badge/Release-1.0-brightgreen">
+#+HTML: <img src="https://img.shields.io/badge/Release-v1.0.0-brightgreen">
 
 ~project-start~ is a highly configurable command line utility
 allowing you to easily start new projects in different
@@ -82,8 +82,11 @@ created.
 *** Variables
 The variables that are available by default are as follows:
 
-| *Name*             | *Description*                                        |
-| ~{{name}}~         | Project Name, as specified by the NAME argument      |
-| ~{{display_name}}~ | Project's Display Name (default: same as ~{{name}}~) |
-| ~{{year}}~         | The current year (default: system year)              |
-| ~{{organisation}}~ | Project's organisation (default: ~EPITECH~)           |
+| *Name*             | *Description*                                                                              |
+| ~{{name}}~         | Project Name, as specified by the NAME argument                                            |
+| ~{{display_name}}~ | Project's Display Name, as specified by the DISPLAY_NAME argument (defaults to ~{{name}}~) |
+| ~{{author}}~       | The name of the user running the command                                                   |
+| ~{{organisation}}~ | Project's organisation (default: ~EPITECH~)                                                |
+| ~{{year}}~         | The current year                                                                           |
+| ~{{time}}~         | The current time, in the following format: ~Wed Dec 31 17:31:13 2025~                      |
+|                    |                                                                                            |
