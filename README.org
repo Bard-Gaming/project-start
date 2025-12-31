@@ -1,6 +1,9 @@
 #+title: Project Starter
 #+author: Christophe DRONNE
 #+date: Mon Dec 29 18:14:40 2025
+#+macro: version 1.0
+
+#+HTML: <img src="https://img.shields.io/badge/Version-{{version}}-brightgreen">
 
 ~project-start~ is a highly configurable command line utility
 allowing you to easily start new projects in different
