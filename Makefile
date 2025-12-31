@@ -9,7 +9,7 @@ NAME = project-start
 
 CONFIG_PATH = $(HOME)/.config/project-start/
 TEMPLATES_DIR = templates/
-USR_BIN = ~/.local/bin/
+USR_BIN = /usr/bin
 
 INCLUDE_DIRS = -I./include/
 
@@ -26,6 +26,7 @@ SRC_FILES =	\
 			src/memory/xmalloc.c									\
 			src/os/os_exec_command.c								\
 			src/os/os_move.c										\
+			src/os/os_readable_time.c								\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
 			src/string/string_addstr.c								\
@@ -36,6 +37,7 @@ SRC_FILES =	\
 			src/string/string_new.c									\
 			src/string/string_reserve.c								\
 			src/templating/template_create_context.c				\
+			src/templating/template_delete_context.c				\
 			src/templating/template_generate.c						\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
@@ -50,20 +52,22 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-install: CFLAGS += -Ofast
-install: $(NAME) $(TEMPLATES_DIR)
-	@if ! [[ -d ~ ]]; then 															\
+$(CONFIG_PATH):
+	@if ! [[ -d ~ ]]; then															\
 		printf "\033[31m%s\033[0m\n" "unable to install: no home directory" >&2;	\
 		false; 																		\
 	fi
+
 	@printf "%s\n" "creating directory $(CONFIG_PATH)"
 	@mkdir --parents $(CONFIG_PATH)
 
+install: CFLAGS += -Ofast
+install: $(NAME) $(TEMPLATES_DIR) $(CONFIG_PATH)
 	@printf "%s\n" "copying templates into config"
 	@cp -r $(TEMPLATES_DIR) $(CONFIG_PATH)
 
 	@printf "%s\n" "adding binary to $(USR_BIN)"
-	@cp $(NAME) $(USR_BIN)
+	@sudo cp $(NAME) $(USR_BIN)
 
 	@printf "\033[32m%s\033[0m\n" "successfully installed $(NAME)"
 

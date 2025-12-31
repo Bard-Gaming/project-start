@@ -12,6 +12,7 @@
 
 int os_exec_command(const char *argv[]);
 int os_move(const char *src_path, const char *dest_path);
+char *os_readable_time(void);
 
 
 #endif
