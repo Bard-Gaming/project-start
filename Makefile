@@ -26,6 +26,7 @@ SRC_FILES =	\
 			src/memory/xmalloc.c									\
 			src/os/os_exec_command.c								\
 			src/os/os_move.c										\
+			src/os/os_readable_time.c								\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
 			src/string/string_addstr.c								\
