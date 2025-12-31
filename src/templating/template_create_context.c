@@ -8,7 +8,6 @@
 
 #include <project_starter/templating.h>
 #include <project_starter/hashtable.h>
-#include <project_starter/string.h>
 #include <project_starter/os.h>
 #include <string.h>
 #include <unistd.h>
@@ -45,19 +44,6 @@ static char *get_username(void)
 }
 
 /**
- * Returns a duplicate of the name
- * in uppercase.
- */
-static char *get_uppercase_name(const TemplateContext *context)
-{
-    String name = string_from_reference(context->names[0]);
-
-    string_upper(&name);
-
-    return name.c_str;
-}
-
-/**
  * Loads default values into the
  * context's variables.
  */
@@ -67,7 +53,6 @@ static void load_defaults(TemplateContext *context)
     hashtable_set(&context->variables, "organisation", "EPITECH");
 
     // Need to be freed
-    hashtable_set(&context->variables, "NAME", get_uppercase_name(context));
     hashtable_set(&context->variables, "year", get_current_year());
     hashtable_set(&context->variables, "time", strdup(os_readable_time()));
     hashtable_set(&context->variables, "author", get_username());
