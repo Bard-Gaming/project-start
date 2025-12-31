@@ -21,11 +21,14 @@
 
 typedef struct {
     const char *language;
+    const char *names[2];
     Hashtable variables;
 } TemplateContext;
 
 
 TemplateContext template_create_context(void);
+void template_register_context_names(TemplateContext *context);
+
 char *template_parse_content(const Hashtable *variables, const char *src);
 
 void template_generate(const TemplateContext *context);
