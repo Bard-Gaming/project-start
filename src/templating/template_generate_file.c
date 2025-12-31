@@ -99,6 +99,7 @@ bool template_generate_file(const Hashtable *vars, const char *src_path, const c
     }
 
     fputs(content, out_file);
+    fclose(out_file);
     free(content);
 
     return true;
