@@ -98,5 +98,5 @@ int main(int argc, char *argv[])
 
     template_generate(&context);
 
-    hashtable_delete(&context.variables, NULL);
+    template_delete_context(&context);
 }
