@@ -9,14 +9,30 @@ allowing you to easily start new projects in different
 low-level programming languages, such as C and C++.
 
 ** Installing
-To install the CLI, all you need to do is run the following
-commands:
+This project uses *GNU Make* to build and install all
+necessary files.
+
+*** Express install
+To install the recommended version of the CLI, all you need
+to do is run the following commands:
 
 #+begin_src shell
 git clone git@github.com:Bard-Gaming/project-start.git
 cd project-start
 make install
 #+end_src
+
+*** Debug install
+If, however, you need a debug version of the CLI, you may
+prepend the ~install~ rule with ~debug~, as follows:
+#+begin_src shell
+make debug install
+#+end_src
+
+*** Cleanup
+Once installation is complete, you may run ~make fclean~
+to delete all built files, or simply delete the cloned
+repository.
 
 ** Using the CLI
 To view the CLI's usage and options, you may simply run
