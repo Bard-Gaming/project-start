@@ -33,6 +33,7 @@ TemplateContext template_create_context(void);
 void template_delete_context(TemplateContext *context);
 void template_register_context_names(TemplateContext *context);
 
+char *template_get_variable(TemplateContext *context, const char *key);
 char *template_parse_content(const Hashtable *variables, const char *src);
 
 void template_generate(const TemplateContext *context);
