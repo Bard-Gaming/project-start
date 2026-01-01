@@ -22,7 +22,7 @@
  * additional utilities (such as automatic
  * upper case).
  */
-char *template_get_variable(TemplateContext *context, const char *key)
+char *template_get_variable(const TemplateContext *context, const char *key)
 {
     char *value = hashtable_get(&context->variables, key);
 

@@ -35,12 +35,12 @@ void template_generate(const TemplateContext *context)
 
     mkdir(project_dir, 0755);
 
-    success = template_generate_from_directory(&context->variables, common_tmpl_path.c_str, project_dir);
+    success = template_generate_from_directory(context, common_tmpl_path.c_str, project_dir);
     if (!success) {
         fputs("error: failed to generate common templates\n", stderr);
     }
 
-    success = template_generate_from_directory(&context->variables, lang_tmpl_path.c_str, project_dir);
+    success = template_generate_from_directory(context, lang_tmpl_path.c_str, project_dir);
     if (!success) {
         fprintf(stderr, "error: failed to generate %s templates\n", context->language);
     }

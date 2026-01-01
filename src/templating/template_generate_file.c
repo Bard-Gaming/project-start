@@ -55,9 +55,9 @@ static char *output_file_path(const char *filename, const char *dest_dir)
  *
  * Returns NULL on error.
  */
-static FILE *open_output_file(const Hashtable *vars, const char *src_path, const char *dest_dir)
+static FILE *open_output_file(const TemplateContext *ctx, const char *src_path, const char *dest_dir)
 {
-    char *filename = template_parse_content(vars, basename(src_path));
+    char *filename = template_parse_content(ctx, basename(src_path));
     char *file_path = output_file_path(filename, dest_dir);
     free(filename);
     if (file_path == NULL)
@@ -76,7 +76,7 @@ static FILE *open_output_file(const Hashtable *vars, const char *src_path, const
  *
  * Returns true on success and false on error.
  */
-bool template_generate_file(const Hashtable *vars, const char *src_path, const char *dest_dir)
+bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir)
 {
     FILE *src_file = fopen(src_path, "rb");
     if (src_file == NULL)
@@ -87,10 +87,10 @@ bool template_generate_file(const Hashtable *vars, const char *src_path, const c
     raw_file_content[read_chars] = '\0';
     fclose(src_file);
 
-    char *content = template_parse_content(vars, raw_file_content);
+    char *content = template_parse_content(context, raw_file_content);
     free(raw_file_content);
 
-    FILE *out_file = open_output_file(vars, src_path, dest_dir);
+    FILE *out_file = open_output_file(context, src_path, dest_dir);
     if (out_file == NULL) {
         free(content);
         return false;

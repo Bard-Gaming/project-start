@@ -52,21 +52,21 @@ static char *join_paths(const char *a, const char *b)
  * handles the generation of a single
  * directory entry.
  */
-static void handle_directory_entry(const Hashtable *vars, struct dirent *entry, const char *dir, const char *dest)
+static void handle_directory_entry(const TemplateContext *ctx, struct dirent *entry, const char *dir, const char *dest)
 {
     char *entry_path = join_paths(dir, entry->d_name);
 
     if (entry->d_type == DT_DIR) {
-        char *subdir_name = template_parse_content(vars, entry->d_name);
+        char *subdir_name = template_parse_content(ctx, entry->d_name);
         char *new_destination = join_paths(dest, subdir_name);
         free(subdir_name);
 
         mkdir(new_destination, 0755);
-        template_generate_from_directory(vars, entry_path, new_destination);
+        template_generate_from_directory(ctx, entry_path, new_destination);
 
         free(new_destination);
     } else {
-        template_generate_file(vars, entry_path, dest);
+        template_generate_file(ctx, entry_path, dest);
     }
 
     free(entry_path);
@@ -76,7 +76,7 @@ static void handle_directory_entry(const Hashtable *vars, struct dirent *entry, 
  * Generates files from templates
  * located in a directory.
  */
-bool template_generate_from_directory(const Hashtable *vars, const char *dir_path, const char *dest_dir)
+bool template_generate_from_directory(const TemplateContext *context, const char *dir_path, const char *dest_dir)
 {
     DIR *directory = opendir(dir_path);
     if (directory == NULL)
@@ -89,7 +89,7 @@ bool template_generate_from_directory(const Hashtable *vars, const char *dir_pat
             continue;
         }
 
-        handle_directory_entry(vars, entry, dir_path, dest_dir);
+        handle_directory_entry(context, entry, dir_path, dest_dir);
         entry = readdir(directory);
     }
 
