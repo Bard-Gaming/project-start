@@ -15,7 +15,7 @@
         #error "Missing PROJECT_STARTER_CONFIG_PATH definition"
     #endif
 
-    #ifndef PROJECT_STARTER_CONFIG_FILE_NAME
-        #define PROJECT_STARTER_VARIABLE_CFG_FILE "variables.cfg"
+    #ifndef PROJECT_STARTER_VARS_CFG_NAME
+        #define PROJECT_STARTER_VARS_CFG_NAME "variables.cfg"
     #endif
 #endif

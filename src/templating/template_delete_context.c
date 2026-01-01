@@ -12,31 +12,12 @@
 #include <string.h>
 
 
-static const char *keys_to_free[] = {
-    "year", "time", "author",
-    "NAME",
-    NULL
-};
-
-static bool should_free_data(const char *key)
-{
-    for (size_t i = 0; keys_to_free[i] != NULL; i++) {
-        if (strcmp(key, keys_to_free[i]) != 0)
-            continue;
-        return true;
-    }
-    return false;
-}
-
 /**
  * Frees up the entry associated
  * to the given key, as necessary.
  */
 static void free_hashtable_entry(const char *key, void *data)
 {
-    if (!should_free_data(key))
-        return;
-
     free(data);
 }
 
