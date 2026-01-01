@@ -5,9 +5,7 @@
 ** Program Entry
 */
 
-#include <project_starter/templating.h>
-#include <project_starter/hashtable.h>
-#include <project_starter/common.h>
+#include <project_starter.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
