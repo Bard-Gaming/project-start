@@ -16,6 +16,6 @@
     #endif
 
     #ifndef PROJECT_STARTER_CONFIG_FILE_NAME
-        #define PROJECT_STARTER_CONFIG_FILE_NAME "project-start.cfg"
+        #define PROJECT_STARTER_VARIABLE_CFG_FILE "variables.cfg"
     #endif
 #endif

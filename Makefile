@@ -7,7 +7,7 @@
 
 NAME = project-start
 
-PROJECT_CONFIG_FILES = config/templates/ config/project-start.cfg
+PROJECT_CONFIG_FILES = config/templates/ config/variables.cfg
 USR_CONFIG_DIR = $(HOME)/.config/project-start/
 USR_BIN = /usr/bin
 
