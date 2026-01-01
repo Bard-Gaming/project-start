@@ -10,6 +10,8 @@
 #ifndef PROJECT_STARTER_CONFIG_H
     #define PROJECT_STARTER_CONFIG_H
     #include <project_starter/hashtable.h>
+    #include <stdbool.h>
+    #include <stdio.h>
 
 
 typedef struct {
@@ -18,7 +20,11 @@ typedef struct {
 } ConfigValue;
 
 
-void config_load_variables(const char *config_path, Hashtable *variables);
+typedef bool (*ConfigCharPredicate)(char);
+
+
+void config_load_variables(const char *file_path, Hashtable *variables);
+ConfigValue *config_parse_value(FILE *stream);
 
 
 #endif

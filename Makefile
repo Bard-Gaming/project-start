@@ -16,6 +16,8 @@ INCLUDE_DIRS = -I./include/
 CFLAGS += -D'PROJECT_STARTER_CONFIG_PATH="$(USR_CONFIG_DIR)"'
 
 SRC_FILES =	\
+			src/config/config_load_variables.c						\
+			src/config/config_parse_value.c							\
 			src/hashtable/hashtable_delete.c						\
 			src/hashtable/hashtable_get.c							\
 			src/hashtable/hashtable_get_bucket.c					\
