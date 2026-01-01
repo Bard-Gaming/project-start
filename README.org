@@ -107,6 +107,10 @@ for ~{{name}}~ = ~bob~, ~{{NAME}}~ will be ~BOB~.
 
 If ~{{NAME}}~ is already defined, the value of ~{{NAME}}~
 will be preferred over the uppercase version of ~{{name}}~.
+
+Variable names that contain an uppercase character
+(such as ~{{Name}}~) are not elligible for uppercase
+equivalents, meaning ~{{NAME}}~ will count as undefined.
 #+end_quote
 
 However, you may define your own, custom variables by creating a
