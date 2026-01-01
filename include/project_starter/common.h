@@ -14,4 +14,8 @@
     #ifndef PROJECT_STARTER_CONFIG_PATH
         #error "Missing PROJECT_STARTER_CONFIG_PATH definition"
     #endif
+
+    #ifndef PROJECT_STARTER_CONFIG_FILE_NAME
+        #define PROJECT_STARTER_CONFIG_FILE_NAME "project-start.cfg"
+    #endif
 #endif
