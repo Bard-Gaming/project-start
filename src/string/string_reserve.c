@@ -7,24 +7,7 @@
 */
 
 #include <project_starter/string.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-
-/**
- * Attempts to reallocate memory,
- * ending the program on failure.
- */
-static void *xrealloc(void *ptr, size_t size)
-{
-    void *res = realloc(ptr, size);
-
-    if (size != 0 && res == NULL) {
-        fputs("critical error: not enough memory to reallocate data\n", stderr);
-        exit(127);
-    }
-    return res;
-}
+#include <project_starter/memory.h>
 
 
 /**

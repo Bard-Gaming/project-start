@@ -27,6 +27,7 @@ String string_copy(const String *str);
 void string_addchr(String *str, char c);
 void string_addstr(String *str, const char *restrict ref);
 void string_addmem(String *str, const char *restrict mem, size_t size);
+void string_join_path(String *path_start, const char *path_end);
 
 void string_reserve(String *str, size_t capacity);
 

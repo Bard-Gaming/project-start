@@ -12,6 +12,10 @@
     #define PROJECT_STARTER_VERSION "v1.0.0"
 
     #ifndef PROJECT_STARTER_CONFIG_PATH
-        #define PROJECT_STARTER_CONFIG_PATH "~/.config/project-start/"
+        #error "Missing PROJECT_STARTER_CONFIG_PATH definition"
+    #endif
+
+    #ifndef PROJECT_STARTER_VARS_CFG_NAME
+        #define PROJECT_STARTER_VARS_CFG_NAME "variables.cfg"
     #endif
 #endif

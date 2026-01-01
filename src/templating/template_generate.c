@@ -8,6 +8,7 @@
 
 #include <project_starter/templating.h>
 #include <project_starter/string.h>
+#include <project_starter/common.h>
 #include <stdio.h>
 #include <sys/stat.h>
 

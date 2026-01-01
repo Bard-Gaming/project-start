@@ -6,8 +6,11 @@
 ** template_create_context
 */
 
+#include "project_starter/config.h"
 #include <project_starter/templating.h>
 #include <project_starter/hashtable.h>
+#include <project_starter/string.h>
+#include <project_starter/common.h>
 #include <project_starter/os.h>
 #include <string.h>
 #include <unistd.h>
@@ -49,13 +52,24 @@ static char *get_username(void)
  */
 static void load_defaults(TemplateContext *context)
 {
-    // May not be freed
-    hashtable_set(&context->variables, "organisation", "EPITECH");
-
     // Need to be freed
     hashtable_set(&context->variables, "year", get_current_year());
     hashtable_set(&context->variables, "time", strdup(os_readable_time()));
     hashtable_set(&context->variables, "author", get_username());
+}
+
+/**
+ * Loads the variables defined in
+ * the user's config.
+ */
+static void load_variables_from_config(TemplateContext* context)
+{
+    String cfg_path = string_from_reference(PROJECT_STARTER_CONFIG_PATH);
+    string_join_path(&cfg_path, PROJECT_STARTER_VARS_CFG_NAME);
+
+    config_load_variables(cfg_path.c_str, &context->variables);
+
+    string_delete(&cfg_path);
 }
 
 /**
@@ -74,5 +88,6 @@ TemplateContext template_create_context(void)
 
     hashtable_init(&context.variables);
     load_defaults(&context);
+    load_variables_from_config(&context);
     return context;
 }

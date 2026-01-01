@@ -7,15 +7,17 @@
 
 NAME = project-start
 
-CONFIG_PATH = $(HOME)/.config/project-start/
-TEMPLATES_DIR = templates/
+PROJECT_CONFIG_FILES = config/templates/ config/variables.cfg
+USR_CONFIG_DIR = $(HOME)/.config/project-start/
 USR_BIN = /usr/bin
 
 INCLUDE_DIRS = -I./include/
 
-CFLAGS += -D'PROJECT_STARTER_CONFIG_PATH="$(CONFIG_PATH)"'
+CFLAGS += -D'PROJECT_STARTER_CONFIG_PATH="$(USR_CONFIG_DIR)"'
 
 SRC_FILES =	\
+			src/config/config_load_variables.c						\
+			src/config/config_parse_value.c							\
 			src/hashtable/hashtable_delete.c						\
 			src/hashtable/hashtable_get.c							\
 			src/hashtable/hashtable_get_bucket.c					\
@@ -24,6 +26,7 @@ SRC_FILES =	\
 			src/hashtable/hashtable_set.c							\
 			src/memory/xcalloc.c									\
 			src/memory/xmalloc.c									\
+			src/memory/xrealloc.c									\
 			src/os/os_exec_command.c								\
 			src/os/os_move.c										\
 			src/os/os_readable_time.c								\
@@ -34,6 +37,7 @@ SRC_FILES =	\
 			src/string/string_copy.c								\
 			src/string/string_delete.c								\
 			src/string/string_from_reference.c						\
+			src/string/string_join_path.c							\
 			src/string/string_new.c									\
 			src/string/string_reserve.c								\
 			src/string/string_upper.c								\
@@ -53,19 +57,19 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-$(CONFIG_PATH):
+$(USR_CONFIG_DIR):
 	@if ! [[ -d ~ ]]; then															\
 		printf "\033[31m%s\033[0m\n" "unable to install: no home directory" >&2;	\
 		false; 																		\
 	fi
 
-	@printf "%s\n" "creating directory $(CONFIG_PATH)"
-	@mkdir --parents $(CONFIG_PATH)
+	@printf "%s\n" "creating directory $(USR_CONFIG_DIR)"
+	@mkdir --parents $(USR_CONFIG_DIR)
 
 install: CFLAGS += -Ofast
-install: $(NAME) $(TEMPLATES_DIR) $(CONFIG_PATH)
+install: $(NAME) $(PROJECT_CONFIG_FILES) $(USR_CONFIG_DIR)
 	@printf "%s\n" "copying templates into config"
-	@cp -r $(TEMPLATES_DIR) $(CONFIG_PATH)
+	@cp -r $(PROJECT_CONFIG_FILES) $(USR_CONFIG_DIR)
 
 	@printf "%s\n" "adding binary to $(USR_BIN)"
 	@sudo cp $(NAME) $(USR_BIN)

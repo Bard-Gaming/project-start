@@ -58,6 +58,7 @@ By default, the command's config can be found at
 The config is structured as follows:
 #+begin_src
 <config root>/
+  |-- variables.cfg
   |-- templates/
         |-- common/
         |     |-- <file name>.template
@@ -76,8 +77,17 @@ affected by this.
 Template files (i.e. files ending in ~.template~) can
 contain variables in the following format: ~{{VAR_NAME}}~.
 
-These variables will get replaced when a new project is
-created.
+These template variables will get replaced by their values
+when a new project is created.
+
+#+begin_quote
+[!NOTE]
+File and directory names can also include
+~{{variables}}~ in their names. Do note
+that files using variables still need to
+have the ~.template~ extension to be included
+in the new project (e.g. ~{{author}}-diary.txt.template~).
+#+end_quote
 
 *** Variables
 The variables that are available by default are as follows:
@@ -87,6 +97,8 @@ The variables that are available by default are as follows:
 | ~{{NAME}}~         | The value of ~{{name}}~ in uppercase                                                       |
 | ~{{display_name}}~ | Project's Display Name, as specified by the DISPLAY_NAME argument (defaults to ~{{name}}~) |
 | ~{{author}}~       | The name of the user running the command                                                   |
-| ~{{organisation}}~ | Project's organisation (default: ~EPITECH~)                                                |
 | ~{{year}}~         | The current year                                                                           |
 | ~{{time}}~         | The current time, in the following format: ~Wed Dec 31 17:31:13 2025~                      |
+
+However, you may define your own, custom variables by creating a
+~variables.cfg~ file in the project starter config.

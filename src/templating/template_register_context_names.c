@@ -8,6 +8,7 @@
 
 #include <project_starter/templating.h>
 #include <project_starter/string.h>
+#include <string.h>
 
 
 /**
@@ -34,7 +35,7 @@ void template_register_context_names(TemplateContext *context)
     if (context->names[1] == NULL)
         context->names[1] = context->names[0];
 
-    hashtable_set(&context->variables, "name", (void *)context->names[0]);
+    hashtable_set(&context->variables, "name", strdup(context->names[0]));
     hashtable_set(&context->variables, "NAME", get_uppercase_name(context));
-    hashtable_set(&context->variables, "display_name", (void *)context->names[1]);
+    hashtable_set(&context->variables, "display_name", strdup(context->names[1]));
 }
