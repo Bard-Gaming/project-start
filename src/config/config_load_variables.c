@@ -18,6 +18,8 @@
 void config_load_variables(const char *file_path, Hashtable *variables)
 {
     FILE *cfg_file = fopen(file_path, "rt");
+    if (cfg_file == NULL)
+        return;
 
     ConfigValue *value = config_parse_value(cfg_file);
     while (value != NULL) {
