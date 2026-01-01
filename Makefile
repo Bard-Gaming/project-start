@@ -36,6 +36,7 @@ SRC_FILES =	\
 			src/string/string_copy.c								\
 			src/string/string_delete.c								\
 			src/string/string_from_reference.c						\
+			src/string/string_join_path.c							\
 			src/string/string_new.c									\
 			src/string/string_reserve.c								\
 			src/string/string_upper.c								\
