@@ -19,7 +19,7 @@ To install the recommended version of the CLI, all you need
 to do is run the following commands:
 
 #+begin_src shell
-git clone git@github.com:Bard-Gaming/project-start.git
+git clone --branch v1.0.0 git@github.com:Bard-Gaming/project-start.git
 cd project-start
 make install
 #+end_src
