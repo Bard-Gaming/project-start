@@ -23,8 +23,8 @@ void config_load_variables(const char *file_path, Hashtable *variables)
     while (value != NULL) {
         hashtable_set(variables, value->name, value->value);
 
+        // don't free value as it's saved in hashtable to be freed later
         free(value->name);
-        free(value->value);
         value = config_parse_value(cfg_file);
     }
 
