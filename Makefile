@@ -26,6 +26,7 @@ SRC_FILES =	\
 			src/hashtable/hashtable_set.c							\
 			src/memory/xcalloc.c									\
 			src/memory/xmalloc.c									\
+			src/memory/xrealloc.c									\
 			src/os/os_exec_command.c								\
 			src/os/os_move.c										\
 			src/os/os_readable_time.c								\
