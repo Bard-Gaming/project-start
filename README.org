@@ -92,13 +92,26 @@ in the new project (e.g. ~{{author}}-diary.txt.template~).
 *** Variables
 The variables that are available by default are as follows:
 
-| *Name*             | *Description*                                                                              |
-| ~{{name}}~         | Project Name, as specified by the NAME argument                                            |
-| ~{{NAME}}~         | The value of ~{{name}}~ in uppercase                                                       |
-| ~{{display_name}}~ | Project's Display Name, as specified by the DISPLAY_NAME argument (defaults to ~{{name}}~) |
-| ~{{author}}~       | The name of the user running the command                                                   |
-| ~{{year}}~         | The current year                                                                           |
-| ~{{time}}~         | The current time, in the following format: ~Wed Dec 31 17:31:13 2025~                      |
+| *Name*             | *Description*                                                                                |
+| ~{{name}}~         | Project name, as specified by the NAME argument                                              |
+| ~{{display_name}}~ | Project's display name, as specified by the DISPLAY_NAME argument (or NAME if not specified) |
+| ~{{author}}~       | The name of the user running the command                                                     |
+| ~{{year}}~         | The current year                                                                             |
+| ~{{time}}~         | The current time, in the following format: ~Wed Dec 31 17:31:13 2025~                        |
+
+#+begin_quote
+[!TIP]
+You may write the variable's name in all UPPERCASE letters.
+This will yield the variable's value in uppercase, e.g.
+for ~{{name}}~ = ~bob~, ~{{NAME}}~ will be ~BOB~.
+
+If ~{{NAME}}~ is already defined, the value of ~{{NAME}}~
+will be preferred over the uppercase version of ~{{name}}~.
+
+Variable names that contain an uppercase character
+(such as ~{{Name}}~) are not elligible for uppercase
+equivalents, meaning ~{{NAME}}~ will count as undefined.
+#+end_quote
 
 However, you may define your own, custom variables by creating a
 ~variables.cfg~ file in the project starter config.

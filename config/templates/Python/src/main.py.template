@@ -1,3 +1,11 @@
+##
+## {{ORGANISATION}} PROJECT, {{year}}
+## {{display_name}}
+## File description:
+## Program Entry
+##
+
+
 def main() -> None:
     pass
 

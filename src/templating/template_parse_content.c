@@ -16,7 +16,7 @@
  * Parses the variable at the start
  * of the source ptr and returns it.
  */
-static const char *parse_variable(const Hashtable *variables, const char **src)
+static const char *parse_variable(const TemplateContext *context, const char **src)
 {
     if ((*src)[0] != '{' || (*src)[1] != '{') {
         (*src)++;
@@ -36,7 +36,7 @@ static const char *parse_variable(const Hashtable *variables, const char **src)
     char *name_cpy = strndup(name, name_len + 1);
     name_cpy[name_len] = '\0';
 
-    const char *value = hashtable_get(variables, name_cpy);
+    const char *value = template_get_variable(context, name_cpy);
     if (value == NULL) {
         fprintf(stderr, "warning: use of undefined variable \"%s\"\n", name_cpy);
         free(name_cpy);
@@ -56,14 +56,14 @@ static const char *parse_variable(const Hashtable *variables, const char **src)
  * Note: The returned string must
  * be free()d by the user.
  */
-char *template_parse_content(const Hashtable *variables, const char *src)
+char *template_parse_content(const TemplateContext *context, const char *src)
 {
     String result = { 0 };
     string_reserve(&result, strlen(src) + 1);
 
     while (*src != '\0') {
         if (*src == '{') {
-            const char *content = parse_variable(variables, &src);
+            const char *content = parse_variable(context, &src);
             string_addstr(&result, content);
             continue;
         }

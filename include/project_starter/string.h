@@ -32,6 +32,7 @@ void string_join_path(String *path_start, const char *path_end);
 void string_reserve(String *str, size_t capacity);
 
 void string_upper(String *str);
+void string_lower(String *str);
 
 void string_delete(String *str);
 void string_clear(String *str);

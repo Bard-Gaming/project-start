@@ -12,18 +12,6 @@
 
 
 /**
- * Returns a duplicate of the name
- * in uppercase.
- */
-static char *get_uppercase_name(const TemplateContext *context)
-{
-    String name = string_from_reference(context->names[0]);
-
-    string_upper(&name);
-    return name.c_str;
-}
-
-/**
  * Registers the available names in
  * the template context's variables.
  */
@@ -36,6 +24,5 @@ void template_register_context_names(TemplateContext *context)
         context->names[1] = context->names[0];
 
     hashtable_set(&context->variables, "name", strdup(context->names[0]));
-    hashtable_set(&context->variables, "NAME", get_uppercase_name(context));
     hashtable_set(&context->variables, "display_name", strdup(context->names[1]));
 }
