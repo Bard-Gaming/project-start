@@ -9,7 +9,7 @@
 #ifndef PROJECT_STARTER_COMMON_H
     #define PROJECT_STARTER_COMMON_H
 
-    #define PROJECT_STARTER_VERSION "v1.0.0"
+    #define PROJECT_STARTER_VERSION "v1.1.0"
 
     #ifndef PROJECT_STARTER_CONFIG_PATH
         #error "Missing PROJECT_STARTER_CONFIG_PATH definition"

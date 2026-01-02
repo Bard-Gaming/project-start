@@ -7,6 +7,7 @@
 */
 
 #include <project_starter/config.h>
+#include <project_starter/hashtable.h>
 #include <stdlib.h>
 
 

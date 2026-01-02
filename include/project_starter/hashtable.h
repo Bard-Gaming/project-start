@@ -8,28 +8,25 @@
 
 #ifndef PROJECT_STARTER_HASHTABLE_H
     #define PROJECT_STARTER_HASHTABLE_H
-    #include <stddef.h>
+    #include <project_starter/types.h>
 
     #define HASHTABLE_INIT_POWER 5     // initial capacity of 2^5 = 32
     #define HASHTABLE_LOAD_FACTOR 2.f  // ideal range: between 1 and 3
     #define HASHING_FACTOR 1997        // ideally a large prime number
 
 
-typedef struct _HashtableBucket {
+struct HashtableBucket {
     char *key;
     void *data;
-    struct _HashtableBucket *next;
-} HashtableBucket;
+    struct HashtableBucket *next;
+};
 
 
-typedef struct {
+struct Hashtable {
     HashtableBucket **buckets;
     size_t count;
     unsigned char capacity_power;  // capacity in powers of 2
-} Hashtable;
-
-
-typedef void (*HashtableDataDeleteFnc)(const char *key, void *data);
+};
 
 
 void hashtable_init(Hashtable *table);

@@ -8,6 +8,7 @@
 
 #include <project_starter/hashtable.h>
 #include <project_starter/memory.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 

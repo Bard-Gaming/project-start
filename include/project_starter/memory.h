@@ -8,7 +8,7 @@
 
 #ifndef PROJECT_STARTER_MEMORY_H
     #define PROJECT_STARTER_MEMORY_H
-    #include <stdlib.h>
+    #include <project_starter/types.h>
 
     #define PS_UNLIKELY(x) __builtin_expect((x), 0)
     #define PS_MEM_ERROR 127

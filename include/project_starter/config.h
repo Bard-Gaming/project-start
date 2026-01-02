@@ -9,18 +9,14 @@
 
 #ifndef PROJECT_STARTER_CONFIG_H
     #define PROJECT_STARTER_CONFIG_H
-    #include <project_starter/hashtable.h>
-    #include <stdbool.h>
+    #include <project_starter/types.h>
     #include <stdio.h>
 
 
-typedef struct {
+struct ConfigValue {
     char *name;
     char *value;
-} ConfigValue;
-
-
-typedef bool (*ConfigCharPredicate)(char);
+};
 
 
 void config_load_variables(const char *file_path, Hashtable *variables);
