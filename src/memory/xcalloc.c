@@ -7,6 +7,7 @@
 */
 
 #include <project_starter/memory.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 
