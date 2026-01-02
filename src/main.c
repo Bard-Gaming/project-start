@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <argp.h>
 
+#define OPT_LIST_KEY 1
+
 
 const char *argp_program_version =
     "project-start " PROJECT_STARTER_VERSION "\n"
@@ -32,6 +34,7 @@ static const char doc[] =
 static const char args_doc[] = "NAME [DISPLAY_NAME]";
 
 static const struct argp_option options[] = {
+    { "list", OPT_LIST_KEY, NULL, 0, "Display available languages and exit" },
     { "git", 'g', NULL, 0, "Initialize a new git repository;\nIf a remote is specified, this is implicitly true." },
     { "language", 'l', "LANGUAGE", 0, "Choose the project's programming language (default: C)" },
     { "remote", 'r', "REMOTE_URL", 0, "Specify a git remote url for the project" },
@@ -53,6 +56,9 @@ static error_t parse_option(int key, char *arg, struct argp_state *state)
             context->git_remote = arg;
             context->should_initialize_git = true;
             return 0;
+        case OPT_LIST_KEY:
+
+            exit(0);
 
         case ARGP_KEY_ARG:
             if (context->names[1] != NULL)
