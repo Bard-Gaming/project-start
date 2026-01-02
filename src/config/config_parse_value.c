@@ -68,7 +68,7 @@ static bool is_value_char(char c)
  * can't be read anymore or the
  * given predicate returns false.
  */
-static bool read_content(String *buffer, FILE *stream, ConfigCharPredicate condition)
+static bool read_content(String *buffer, FILE *stream, CharPredicate condition)
 {
     bool read_success;
     char current;
