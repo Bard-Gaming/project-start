@@ -23,6 +23,7 @@ typedef struct TemplateContext TemplateContext;
 typedef struct HashtableBucket HashtableBucket;
 typedef struct ConfigValue ConfigValue;
 typedef struct Hashtable Hashtable;
+typedef struct Vector Vector;
 typedef struct String String;
 
 

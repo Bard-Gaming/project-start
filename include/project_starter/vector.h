@@ -8,14 +8,14 @@
 
 #ifndef PROJECT_STARTER_VECTOR_H
     #define PROJECT_STARTER_VECTOR_H
-    #include <stddef.h>
+    #include <project_starter/types.h>
 
 
-typedef struct {
+struct Vector {
     void *data;
     size_t count;
     size_t capacity;
-} Vector;
+};
 
 
 void vector_push_back(Vector *vector, void *data);
