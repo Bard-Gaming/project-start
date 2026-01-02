@@ -7,17 +7,17 @@
 
 #ifndef PROJECT_STARTER_STRING_H
     #define PROJECT_STARTER_STRING_H
-    #include <stddef.h>
+    #include <project_starter/types.h>
 
     #define STRING_START_CAPACITY 12
     #define STRING_GROWTH 2
 
 
-typedef struct {
+struct String {
     char *c_str;
     size_t length;
     size_t capacity;
-} String;
+};
 
 
 String string_new(char *str);

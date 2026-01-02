@@ -17,5 +17,6 @@
     #include <project_starter/os.h>
     #include <project_starter/string.h>
     #include <project_starter/templating.h>
+    #include <project_starter/types.h>
 
 #endif
