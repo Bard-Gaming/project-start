@@ -41,6 +41,11 @@ static const struct argp_option options[] = {
     { 0 }
 };
 
+__attribute__((noreturn)) static void list_available_langs(void)
+{
+    exit(0);
+}
+
 static error_t parse_option(int key, char *arg, struct argp_state *state)
 {
     TemplateContext *context = state->input;
@@ -57,8 +62,7 @@ static error_t parse_option(int key, char *arg, struct argp_state *state)
             context->should_initialize_git = true;
             return 0;
         case OPT_LIST_KEY:
-
-            exit(0);
+            list_available_langs();
 
         case ARGP_KEY_ARG:
             if (context->names[1] != NULL)
