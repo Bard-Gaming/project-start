@@ -5,7 +5,6 @@
 ** Program Entry
 */
 
-#include "project_starter/templating.h"
 #include <project_starter.h>
 #include <stdlib.h>
 #include <string.h>
@@ -53,9 +52,8 @@ __attribute__((noreturn)) static void list_available_langs(void)
     puts("Available programming languages are:");
     for (size_t i = 0; i < available_langs.count; i++) {
         puts(available_langs.data[i]);
-        free(available_langs.data[i]);
     }
-    vector_delete(&available_langs, NULL);
+    vector_delete(&available_langs, vector_free_item);
 
     exit(0);
 }
