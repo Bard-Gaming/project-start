@@ -29,7 +29,9 @@ SRC_FILES =	\
 			src/memory/xrealloc.c									\
 			src/memory/xreallocarray.c								\
 			src/os/os_exec_command.c								\
+			src/os/os_is_empty_directory.c							\
 			src/os/os_move.c										\
+			src/os/os_path_exists.c									\
 			src/os/os_readable_time.c								\
 			src/string/string_addchr.c								\
 			src/string/string_addmem.c								\
