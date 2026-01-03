@@ -53,6 +53,7 @@ SRC_FILES =	\
 			src/templating/template_get_variable.c					\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
+			src/vector/vector_contains.c							\
 			src/vector/vector_delete.c								\
 			src/vector/vector_grow.c								\
 			src/vector/vector_push_back.c							\

@@ -9,6 +9,7 @@
 #ifndef PROJECT_STARTER_VECTOR_H
     #define PROJECT_STARTER_VECTOR_H
     #include <project_starter/types.h>
+    #include <stdlib.h>
 
     #define VECTOR_INIT_CAPACITY 10
     #define VECTOR_GROWTH_FACTOR 2
@@ -23,11 +24,14 @@ struct Vector {
 
 void vector_push_back(Vector *vector, void *item);
 void vector_remove_fast(Vector *vector, size_t index);
+bool vector_contains(Vector *vector, const void *item, CompareFnc cmp);
 
 void vector_reserve(Vector *vector, size_t capacity);
 void vector_grow(Vector *vector);
 
 void vector_delete(Vector *vector, VectorItemFnc free_item);
+
+inline void vector_free_item(__attribute__((unused)) size_t i, void *data) { free(data); }
 
 
 #endif
