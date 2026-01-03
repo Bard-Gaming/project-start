@@ -23,6 +23,7 @@ typedef struct TemplateContext TemplateContext;
 typedef struct HashtableBucket HashtableBucket;
 typedef struct ConfigValue ConfigValue;
 typedef struct Hashtable Hashtable;
+typedef struct Vector Vector;
 typedef struct String String;
 
 
@@ -33,6 +34,7 @@ typedef struct String String;
 /////////////////////////////////////////////////
 
 typedef void (*HashtableDataDeleteFnc)(const char *key, void *data);
+typedef void (*VectorItemFnc)(size_t index, void *item);
 typedef bool (*CharPredicate)(char);
 
 
