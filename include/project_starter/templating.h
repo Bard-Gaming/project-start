@@ -42,7 +42,7 @@ Vector template_get_available_langs(const char *dir_path);
 bool template_is_available_lang(const char *cmp_ref);
 
 // Generation
-void template_generate(const TemplateContext *context);
+bool template_generate(const TemplateContext *context);
 void template_generate_git(const TemplateContext *context, const char *path);
 bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir);
 bool template_generate_from_directory(const TemplateContext *context, const char *dir_path, const char *dest_dir);

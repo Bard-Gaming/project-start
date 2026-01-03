@@ -9,6 +9,7 @@
 #include <project_starter/templating.h>
 #include <project_starter/string.h>
 #include <project_starter/common.h>
+#include <project_starter/os.h>
 #include <stdio.h>
 #include <sys/stat.h>
 
@@ -16,22 +17,28 @@
 /**
  * Generates all file templates for
  * the project.
+ *
+ * Returns true on success and false
+ * on failure.
  */
-void template_generate(const TemplateContext *context)
+bool template_generate(const TemplateContext *context)
 {
-    String config_path = string_from_reference(PROJECT_STARTER_CONFIG_PATH);
-    String common_tmpl_path = string_copy(&config_path);
-    String lang_tmpl_path = string_copy(&config_path);
+    String common_tmpl_path = string_from_reference(PROJECT_STARTER_CONFIG_PATH);;
+    String lang_tmpl_path = string_copy(&common_tmpl_path);
     bool success;
 
-    string_delete(&config_path);
+    string_join_path(&common_tmpl_path, "templates/common/");
 
-    string_addstr(&common_tmpl_path, "templates/common/");
-
-    string_addstr(&lang_tmpl_path, "templates/");
-    string_addstr(&lang_tmpl_path, context->language);
+    string_join_path(&lang_tmpl_path, "templates/");
+    string_join_path(&lang_tmpl_path, context->language);
 
     const char *project_dir = context->names[0] ?: ".";
+    if (!os_is_empty_directory(project_dir)) {
+        fprintf(stderr, "critical error: directory %s is not empty\n", project_dir);
+        string_delete(&common_tmpl_path);
+        string_delete(&lang_tmpl_path);
+        return false;
+    }
 
     mkdir(project_dir, 0755);
 
@@ -50,4 +57,6 @@ void template_generate(const TemplateContext *context)
 
     string_delete(&common_tmpl_path);
     string_delete(&lang_tmpl_path);
+
+    return true;
 }
