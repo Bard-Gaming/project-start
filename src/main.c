@@ -5,6 +5,7 @@
 ** Program Entry
 */
 
+#include "project_starter/templating.h"
 #include <project_starter.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,6 +44,19 @@ static const struct argp_option options[] = {
 
 __attribute__((noreturn)) static void list_available_langs(void)
 {
+    String template_dir_path = string_from_reference(PROJECT_STARTER_CONFIG_PATH);
+    string_join_path(&template_dir_path, "templates");
+
+    Vector available_langs = template_get_available_langs(template_dir_path.c_str);
+    string_delete(&template_dir_path);
+
+    puts("Available programming languages are:");
+    for (size_t i = 0; i < available_langs.count; i++) {
+        puts(available_langs.data[i]);
+        free(available_langs.data[i]);
+    }
+    vector_delete(&available_langs, NULL);
+
     exit(0);
 }
 
