@@ -18,7 +18,7 @@
 static bool is_ignored(const char *name)
 {
     return name[0] == '.'
-        ? name[1] == '\0' || strcmp(name + 1, ".")
+        ? (name[1] == '\0') || (strcmp(name + 1, ".") == 0)
         : false;
 }
 
