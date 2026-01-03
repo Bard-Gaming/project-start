@@ -52,6 +52,11 @@ SRC_FILES =	\
 			src/templating/template_get_variable.c					\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
+			src/vector/vector_delete.c								\
+			src/vector/vector_grow.c								\
+			src/vector/vector_push_back.c							\
+			src/vector/vector_remove_fast.c							\
+			src/vector/vector_reserve.c								\
 			src/main.c												\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)

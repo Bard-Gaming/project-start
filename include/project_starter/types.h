@@ -34,6 +34,7 @@ typedef struct String String;
 /////////////////////////////////////////////////
 
 typedef void (*HashtableDataDeleteFnc)(const char *key, void *data);
+typedef void (*VectorItemFnc)(size_t index, void *item);
 typedef bool (*CharPredicate)(char);
 
 
