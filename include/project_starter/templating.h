@@ -39,6 +39,7 @@ void template_register_context_names(TemplateContext *context);
 char *template_get_variable(const TemplateContext *context, const char *key);
 char *template_parse_content(const TemplateContext *context, const char *src);
 Vector template_get_available_langs(const char *dir_path);
+bool template_is_available_lang(const char *cmp_ref);
 
 // Generation
 void template_generate(const TemplateContext *context);

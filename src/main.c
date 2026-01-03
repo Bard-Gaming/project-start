@@ -5,7 +5,6 @@
 ** Program Entry
 */
 
-#include "project_starter/templating.h"
 #include <project_starter.h>
 #include <stdlib.h>
 #include <string.h>
@@ -53,9 +52,8 @@ __attribute__((noreturn)) static void list_available_langs(void)
     puts("Available programming languages are:");
     for (size_t i = 0; i < available_langs.count; i++) {
         puts(available_langs.data[i]);
-        free(available_langs.data[i]);
     }
-    vector_delete(&available_langs, NULL);
+    vector_delete(&available_langs, vector_free_item);
 
     exit(0);
 }
@@ -108,6 +106,16 @@ int main(int argc, char *argv[])
     TemplateContext context = template_create_context();
 
     argp_parse(&arg_parser, argc, argv, 0, 0, &context);
+    if (!template_is_available_lang(context.language)) {
+        printf(
+            "error: language \"%s\" is not available.\n"
+            "Please choose from an available language, "
+            "or update your configuration.\n",
+            context.language
+        );
+        exit(2);
+    }
+
     template_register_context_names(&context);
 
     template_generate(&context);
