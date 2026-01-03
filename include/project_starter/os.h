@@ -8,11 +8,16 @@
 
 #ifndef PROJECT_STARTER_OS_H
     #define PROJECT_STARTER_OS_H
+    #include <project_starter/types.h>
 
 
 int os_exec_command(const char *argv[]);
 int os_move(const char *src_path, const char *dest_path);
+
 char *os_readable_time(void);
+
+bool os_path_exists(const char *path);
+bool os_is_empty_directory(const char *path);
 
 
 #endif

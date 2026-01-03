@@ -58,6 +58,18 @@ __attribute__((noreturn)) static void list_available_langs(void)
     exit(0);
 }
 
+__attribute__((noreturn)) static void lang_not_available_error(const char *str)
+{
+    fprintf(
+        stderr,
+        "critical error: language \"%s\" is not available.\n"
+        "Please choose from an available language, "
+        "or update your configuration.\n",
+        str
+    );
+    exit(2);
+}
+
 static error_t parse_option(int key, char *arg, struct argp_state *state)
 {
     TemplateContext *context = state->input;
@@ -107,18 +119,13 @@ int main(int argc, char *argv[])
 
     argp_parse(&arg_parser, argc, argv, 0, 0, &context);
     if (!template_is_available_lang(context.language)) {
-        printf(
-            "error: language \"%s\" is not available.\n"
-            "Please choose from an available language, "
-            "or update your configuration.\n",
-            context.language
-        );
-        exit(2);
+        lang_not_available_error(context.language);
     }
 
     template_register_context_names(&context);
-
-    template_generate(&context);
+    bool success = template_generate(&context);
 
     template_delete_context(&context);
+
+    return success ? 0 : 1;
 }
