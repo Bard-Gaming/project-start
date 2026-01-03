@@ -51,6 +51,7 @@ SRC_FILES =	\
 			src/templating/template_generate_git.c					\
 			src/templating/template_get_available_langs.c			\
 			src/templating/template_get_variable.c					\
+			src/templating/template_is_available_lang.c				\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
 			src/vector/vector_contains.c							\
