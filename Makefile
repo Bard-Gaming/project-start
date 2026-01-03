@@ -49,6 +49,7 @@ SRC_FILES =	\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
 			src/templating/template_generate_git.c					\
+			src/templating/template_get_available_langs.c			\
 			src/templating/template_get_variable.c					\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
