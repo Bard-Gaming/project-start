@@ -5,11 +5,14 @@
 ** Program Entry
 */
 
+#include "project_starter/templating.h"
 #include <project_starter.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <argp.h>
+
+#define OPT_LIST_KEY 1
 
 
 const char *argp_program_version =
@@ -32,11 +35,30 @@ static const char doc[] =
 static const char args_doc[] = "NAME [DISPLAY_NAME]";
 
 static const struct argp_option options[] = {
+    { "list", OPT_LIST_KEY, NULL, 0, "Display available languages and exit" },
     { "git", 'g', NULL, 0, "Initialize a new git repository;\nIf a remote is specified, this is implicitly true." },
     { "language", 'l', "LANGUAGE", 0, "Choose the project's programming language (default: C)" },
     { "remote", 'r', "REMOTE_URL", 0, "Specify a git remote url for the project" },
     { 0 }
 };
+
+__attribute__((noreturn)) static void list_available_langs(void)
+{
+    String template_dir_path = string_from_reference(PROJECT_STARTER_CONFIG_PATH);
+    string_join_path(&template_dir_path, "templates");
+
+    Vector available_langs = template_get_available_langs(template_dir_path.c_str);
+    string_delete(&template_dir_path);
+
+    puts("Available programming languages are:");
+    for (size_t i = 0; i < available_langs.count; i++) {
+        puts(available_langs.data[i]);
+        free(available_langs.data[i]);
+    }
+    vector_delete(&available_langs, NULL);
+
+    exit(0);
+}
 
 static error_t parse_option(int key, char *arg, struct argp_state *state)
 {
@@ -53,6 +75,8 @@ static error_t parse_option(int key, char *arg, struct argp_state *state)
             context->git_remote = arg;
             context->should_initialize_git = true;
             return 0;
+        case OPT_LIST_KEY:
+            list_available_langs();
 
         case ARGP_KEY_ARG:
             if (context->names[1] != NULL)

@@ -8,6 +8,7 @@
 
 #ifndef PROJECT_STARTER_TEMPLATING_H
     #define PROJECT_STARTER_TEMPLATING_H
+    #include <project_starter/types.h>
     #include <project_starter/hashtable.h>
 
     #define _GNU_SOURCE  // for GNU's basename()
@@ -19,23 +20,27 @@
     #define TMPL_FILE_EXTENSION "template"
 
 
-typedef struct {
+struct TemplateContext {
     const char *language;
     const char *names[2];
     Hashtable variables;
 
     bool should_initialize_git;
     const char *git_remote;
-} TemplateContext;
+};
 
 
+// Context-related
 TemplateContext template_create_context(void);
 void template_delete_context(TemplateContext *context);
 void template_register_context_names(TemplateContext *context);
 
+// Utils
 char *template_get_variable(const TemplateContext *context, const char *key);
 char *template_parse_content(const TemplateContext *context, const char *src);
+Vector template_get_available_langs(const char *dir_path);
 
+// Generation
 void template_generate(const TemplateContext *context);
 void template_generate_git(const TemplateContext *context, const char *path);
 bool template_generate_file(const TemplateContext *context, const char *src_path, const char *dest_dir);

@@ -27,6 +27,7 @@ SRC_FILES =	\
 			src/memory/xcalloc.c									\
 			src/memory/xmalloc.c									\
 			src/memory/xrealloc.c									\
+			src/memory/xreallocarray.c								\
 			src/os/os_exec_command.c								\
 			src/os/os_move.c										\
 			src/os/os_readable_time.c								\
@@ -48,9 +49,15 @@ SRC_FILES =	\
 			src/templating/template_generate_file.c					\
 			src/templating/template_generate_from_directory.c		\
 			src/templating/template_generate_git.c					\
+			src/templating/template_get_available_langs.c			\
 			src/templating/template_get_variable.c					\
 			src/templating/template_parse_content.c					\
 			src/templating/template_register_context_names.c		\
+			src/vector/vector_delete.c								\
+			src/vector/vector_grow.c								\
+			src/vector/vector_push_back.c							\
+			src/vector/vector_remove_fast.c							\
+			src/vector/vector_reserve.c								\
 			src/main.c												\
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
