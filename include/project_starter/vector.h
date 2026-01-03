@@ -31,7 +31,7 @@ void vector_grow(Vector *vector);
 
 void vector_delete(Vector *vector, VectorItemFnc free_item);
 
-inline void vector_free_item(__attribute__((unused)) size_t i, void *data) { free(data); }
+static inline void vector_free_item(__attribute__((unused)) size_t i, void *data) { free(data); }
 
 
 #endif
