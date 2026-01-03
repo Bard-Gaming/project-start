@@ -1,12 +1,13 @@
 /*
 ** EPITECH PROJECT, 2025
-** Module: Hashtable
+** Module: Memory
 ** File description:
 ** Implementation for
 ** xmalloc
 */
 
 #include <project_starter/memory.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 
