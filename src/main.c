@@ -84,6 +84,16 @@ int main(int argc, char *argv[])
     TemplateContext context = template_create_context();
 
     argp_parse(&arg_parser, argc, argv, 0, 0, &context);
+    if (!template_is_available_lang(context.language)) {
+        printf(
+            "error: language \"%s\" is not available.\n"
+            "Please choose from an available language, "
+            "or update your configuration.\n",
+            context.language
+        );
+        exit(2);
+    }
+
     template_register_context_names(&context);
 
     template_generate(&context);
