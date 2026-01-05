@@ -33,7 +33,7 @@ struct TemplateContext {
 // Context-related
 TemplateContext template_create_context(void);
 void template_delete_context(TemplateContext *context);
-void template_register_context_names(TemplateContext *context);
+bool template_register_context_names(TemplateContext *context);
 
 // Utils
 char *template_get_variable(const TemplateContext *context, const char *key);
