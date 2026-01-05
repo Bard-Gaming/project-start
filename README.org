@@ -2,7 +2,7 @@
 #+author: Christophe DRONNE
 #+date: Mon Dec 29 18:14:40 2025
 
-#+HTML: <img src="https://img.shields.io/badge/Release-v1.1.0-brightgreen">
+#+HTML: <img src="https://img.shields.io/badge/Release-v1.1.1-brightgreen">
 
 ~project-start~ is a highly configurable command line utility
 allowing you to easily start new projects in all kinds of
@@ -19,7 +19,7 @@ To install the recommended version of the CLI, all you need
 to do is run the following commands:
 
 #+begin_src shell
-git clone --branch v1.1.0 git@github.com:Bard-Gaming/project-start.git
+git clone --branch v1.1.1 git@github.com:Bard-Gaming/project-start.git
 cd project-start
 make install
 #+end_src

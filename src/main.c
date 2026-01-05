@@ -58,6 +58,16 @@ __attribute__((noreturn)) static void list_available_langs(void)
     exit(0);
 }
 
+__attribute__((noreturn)) static void illegal_project_name_error(const char *name)
+{
+    fprintf(
+        stderr,
+        "critical error: name \"%s\" is not a legal project name\n",
+        name
+    );
+    exit(2);
+}
+
 __attribute__((noreturn)) static void lang_not_available_error(const char *str)
 {
     fprintf(
@@ -116,14 +126,18 @@ static struct argp arg_parser = {
 int main(int argc, char *argv[])
 {
     TemplateContext context = template_create_context();
+    bool success;
 
     argp_parse(&arg_parser, argc, argv, 0, 0, &context);
     if (!template_is_available_lang(context.language)) {
         lang_not_available_error(context.language);
     }
 
-    template_register_context_names(&context);
-    bool success = template_generate(&context);
+    success = template_register_context_names(&context);
+    if (!success)
+        illegal_project_name_error(context.names[0]);
+
+    success = template_generate(&context);
 
     template_delete_context(&context);
 
