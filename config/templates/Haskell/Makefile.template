@@ -1,0 +1,36 @@
+##
+## {{ORGANISATION}} PROJECT, {{year}}
+## {{display_name}}
+## File description:
+## Makefile used to build
+## the project
+##
+
+NAME = {{name}}
+
+HC = ghc
+
+SRC_FILES =	\
+			src/main.hs							\
+
+OBJ_FILES = $(SRC_FILES:.hs=.o)
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+%.o: %.hs
+	$(HC) -c $< -o $@
+
+$(NAME): $(OBJ_FILES)
+	$(HC) $(OBJ_FILES) -o $(NAME)
+	@printf "\033[32m%s\033[0m\n" "successfully built $@"
+
+clean:
+	@rm -f $(OBJ_FILES)
+	@rm -f $(OBJ_FILES:.o=.hi)
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
