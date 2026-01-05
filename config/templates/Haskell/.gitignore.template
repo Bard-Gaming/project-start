@@ -1,0 +1,5 @@
+# Compiled files
+{{name}}
+!{{name}}/
+*.o
+*.hi
