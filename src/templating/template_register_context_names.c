@@ -60,4 +60,5 @@ bool template_register_context_names(TemplateContext *context)
 
     hashtable_set(&context->variables, "name", strdup(context->names[0]));
     hashtable_set(&context->variables, "display_name", strdup(context->names[1]));
+    return true;
 }
