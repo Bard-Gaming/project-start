@@ -1,0 +1,11 @@
+{-
+--
+-- {{ORGANISATION}} PROJECT, {{year}}
+-- {{display_name}}
+-- File description:
+-- Program Entry
+--
+-}
+
+main :: IO ()
+main = putStrLn "Hello, World!"
