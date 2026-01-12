@@ -8,10 +8,12 @@
 
 NAME = {{name}}
 
-HC = ghc
+ifndef HC
+	HC = ghc
+endif
 
 SRC_FILES =	\
-			src/main.hs							\
+			src/Main.hs							\
 
 OBJ_FILES = $(SRC_FILES:.hs=.o)
 
@@ -20,10 +22,12 @@ OBJ_FILES = $(SRC_FILES:.hs=.o)
 all: $(NAME)
 
 %.o: %.hs
-	$(HC) -c $< -o $@
+	@$(HC) -c $< -o $@
+	@echo 'hc -c $<'
 
 $(NAME): $(OBJ_FILES)
-	$(HC) $(OBJ_FILES) -o $(NAME)
+	@$(HC) $(OBJ_FILES) -o $@
+	@echo 'hc -o $@'
 	@printf "\033[32m%s\033[0m\n" "successfully built $@"
 
 clean:
