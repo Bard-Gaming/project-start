@@ -1,0 +1,40 @@
+##
+## {{ORGANISATION}} PROJECT, {{year}}
+## {{display_name}}
+## File description:
+## Project Makefile
+##
+
+NAME = {{name}}
+
+INCLUDE_DIRS =
+
+SRC_FILES =	src/main.cpp						\
+
+OBJ_FILES = $(SRC_FILES:.cpp=.o)
+
+.PHONY: all debug sanitize clean fclean re
+
+all: $(NAME)
+
+%.o: %.cpp
+	@$(CXX) -c $< $(INCLUDE_DIRS) $(CFLAGS) -o $@
+	@echo 'cxx -c $<'
+
+$(NAME): $(OBJ_FILES)
+	@$(CC) $(OBJ_FILES) $(INCLUDE_DIRS) $(CFLAGS) -o $(NAME)
+	@echo 'cxx -o $@'
+
+debug: CFLAGS += -ggdb
+debug: fclean $(NAME)
+
+sanitize: CFLAGS += -g -fsanitize=address -lasan
+sanitize: fclean $(NAME)
+
+clean:
+	@rm -f $(OBJ_FILES)
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
