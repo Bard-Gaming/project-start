@@ -1,0 +1,6 @@
+# Compiled files
+{{name}}
+!{{name}}/
+*.out
+*.o
+*.a
